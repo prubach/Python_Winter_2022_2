@@ -19,5 +19,6 @@ if __name__ == '__main__':
     print_hi('PyCharm')
     # New comment to demo git
     print('Hi from git')
+    print('2nd line to show git')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
