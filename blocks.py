@@ -19,4 +19,6 @@ if a > 6:
     else:
         d = 346
 
-print(f'd={d}')
+#print(f'd={d}')
+print('d={}'.format(d))
+print('d=' + str(d))
