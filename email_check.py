@@ -5,6 +5,8 @@ email4 = 'pawel@'
 email5 = 'pawel@.pl'
 email6 = 'pa@wel@wwa.pl'
 email7 = 'ab@sgh@waw@pl'
+email8 = 'pawel@pl.'
+email9 = 'pawel@gmail.com'
 
 
 def check_email(email):
@@ -17,10 +19,11 @@ def check_email(email):
     if not (email.find('@') == email.rfind('@')):
         print('@ too many of them')
         return False
+    #TODO check for @. in email
     return True
 
 
-for em in [email1, email2, email3, email4, email5, email6, email7]:
+for em in [email1, email2, email3, email4, email5, email6, email7, email8, email9]:
     print('{}: {}'.format(em, check_email(em)))
 
 #for i in range(len(email4)):
