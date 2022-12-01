@@ -37,11 +37,11 @@ def sum_bowls_recursive(n):
 def sum_bowls_seq(n):
     return int(n*(n+1)/2)
 
-
-#n = 6
-#print('Sum bowls using loop: {} = {}'.format(n, sum_bowls_loop(n)))
-n = 7
-print('Sum bowls using loop: {} = {}'.format(n, sum_bowls_loop(n)))
-print('Sum bowls using loop2: {} = {}'.format(n, sum_bowls_loop2(n)))
-print('Sum bowls using recursion: {} = {}'.format(n, sum_bowls_recursive(n)))
-print('Sum bowls using sequence: {} = {}'.format(n, sum_bowls_seq(n)))
+if __name__ == '__main__':
+    #n = 6
+    #print('Sum bowls using loop: {} = {}'.format(n, sum_bowls_loop(n)))
+    n = 7
+    print('Sum bowls using loop: {} = {}'.format(n, sum_bowls_loop(n)))
+    print('Sum bowls using loop2: {} = {}'.format(n, sum_bowls_loop2(n)))
+    print('Sum bowls using recursion: {} = {}'.format(n, sum_bowls_recursive(n)))
+    print('Sum bowls using sequence: {} = {}'.format(n, sum_bowls_seq(n)))
