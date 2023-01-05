@@ -46,10 +46,13 @@ class Bank:
         return a
 
     def transfer(self, from_account_id, to_account_id, amount):
-        #TODO implement
-        # 1. find both accounts
-        # 2. perform charge and deposit
-        pass
+        ##TODO implement
+        ## 1. find both accounts
+        ## 2. perform charge and deposit
+        from_acc = self.find_account(from_account_id)
+        to_acc = self.find_account(to_account_id)
+        from_acc.charge(amount)
+        to_acc.deposit(amount)
 
     def find_account(self, acc_id):
         # loop through the list of accounts and return the matching account
