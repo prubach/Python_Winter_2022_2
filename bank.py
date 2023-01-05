@@ -29,7 +29,6 @@ class Account:
 
 
 class Bank:
-
     def __init__(self):
         self.account_list = []
         self.customer_list = []
@@ -44,6 +43,16 @@ class Bank:
         self.account_list.append(a)
         return a
 
+    def transfer(self, from_account_id, to_account_id, amount):
+        #TODO implement
+        # 1. find both accounts
+        # 2. perform charge and deposit
+        pass
+
+    def find_account(self, acc_id):
+        #TODO loop through the list of accounts and return the matching account
+        pass
+
     def __repr__(self):
         return f'Bank:\n{self.customer_list}\n{self.account_list}\n----------'
 
@@ -53,12 +62,16 @@ b = Bank()
 c1 = b.create_customer('John', 'Smith')
 print(c1)
 print(b)
-a = b.create_account(c1)
+a1 = b.create_account(c1)
 #a = Account(c1)
-print(a)
-a.deposit(100)
-print(a)
-a.charge(50)
-print(a)
-
+print(a1)
+a1.deposit(100)
+print(a1)
+a1.charge(50)
+print(a1)
+a2 = b.create_account(c1)
+print('Before transfer')
+print(b)
+b.transfer(1001, 1002, 20)
+print('After transfer')
 print(b)
