@@ -52,8 +52,11 @@ class Bank:
         pass
 
     def find_account(self, acc_id):
-        #TODO loop through the list of accounts and return the matching account
-        pass
+        # loop through the list of accounts and return the matching account
+        for acc in self.account_list:
+            if acc.id == acc_id:
+                return acc
+        return None
 
     def __repr__(self):
         return f'Bank:\n{self.customer_list}\n{self.account_list}\n----------'
@@ -83,6 +86,11 @@ print(a1)
 a2 = b.create_account(c1)
 print('Before transfer')
 print(b)
+
+a_from = b.find_account(1001)
+print('account from')
+print(a_from)
+
 b.transfer(1001, 1002, 20)
 print('After transfer')
 print(b)
