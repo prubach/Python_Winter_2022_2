@@ -19,9 +19,11 @@ class Account:
         self._balance = 0
 
     def deposit(self, amount):
+        #TODO add throwing exception when amount is invalid
         self._balance += amount
 
     def charge(self, amount):
+        #TODO add throwing exception when amount is invalid or there are insufficient funds
         self._balance -= amount
 
     def __repr__(self):
@@ -57,6 +59,15 @@ class Bank:
         return f'Bank:\n{self.customer_list}\n{self.account_list}\n----------'
 
 
+class BankException(Exception):
+    def __init__(self, msg, amount):
+        super().__init__(msg)
+        self.amount = amount
+# to throw the above BankException you can use the following code:
+# raise BankException('Amount is not valid', amount)
+
+
+
 #c1 = Customer('John', "Smith")
 b = Bank()
 c1 = b.create_customer('John', 'Smith')
@@ -75,3 +86,4 @@ print(b)
 b.transfer(1001, 1002, 20)
 print('After transfer')
 print(b)
+
