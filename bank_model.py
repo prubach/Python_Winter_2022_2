@@ -94,7 +94,7 @@ class DBSession:
     current_db_session = None
 
     def engine(self):
-        return create_engine("sqlite:///bank.db")
+        return create_engine("sqlite:///bank.db", echo=True)
 
     def db_session(self):
         if not DBSession.current_db_session:

@@ -1,6 +1,6 @@
 from bank_model import init_db, Bank, DBSession
 
-db = DBSession.db_session()
+db = DBSession().db_session()
 
 def initialize():
     init_db()
