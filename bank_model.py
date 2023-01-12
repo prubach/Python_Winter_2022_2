@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy import Column, Integer, String, Float, create_engine
 
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
 
@@ -89,29 +90,18 @@ class BankException(Exception):
 # to throw the above BankException you can use the following code:
 # raise BankException('Amount is not valid', amount)
 
+class DBSession:
+    current_db_session = None
 
+    def engine(self):
+        return create_engine("sqlite:///bank.db")
 
-#c1 = Customer('John', "Smith")
-b = Bank()
-c1 = b.create_customer('John', 'Smith')
-print(c1)
-print(b)
-a1 = b.create_account(c1)
-#a = Account(c1)
-print(a1)
-a1.deposit(100)
-print(a1)
-a1.charge(50)
-print(a1)
-a2 = b.create_account(c1)
-print('Before transfer')
-print(b)
+    def db_session(self):
+        if not DBSession.current_db_session:
+            Session = sessionmaker(bind=self.engine(), autocommit=False, autoflush=False)
+            DBSession.current_db_session = Session()
+        return DBSession.current_db_session
 
-a_from = b.find_account(1001)
-print('account from')
-print(a_from)
-
-b.transfer(1001, 1002, 20)
-print('After transfer')
-print(b)
-
+def init_db():
+    db_session = DBSession()
+    Base.metadata.create_all(bind=db_session.engine())
