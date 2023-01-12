@@ -39,6 +39,8 @@ class Account(Base):
 
     def deposit(self, amount):
         #TODO add throwing exception when amount is invalid
+        if not self.balance:
+            self.balance = 0
         self.balance += amount
 
     def charge(self, amount):
@@ -58,17 +60,15 @@ class Bank(Base):
 
     def __init__(self, name):
         self.name = name
-        self.account_list = []
-        self.customer_list = []
 
-    def create_customer(self, firstname, lastname):
-        c = Customer(firstname, lastname)
-        self.customer_list.append(c)
+    def create_customer(self, firstname, lastname, email):
+        c = Customer(firstname, lastname, email)
+        c.bank = self
         return c
 
     def create_account(self, customer):
         a = Account(customer)
-        self.account_list.append(a)
+        a.bank = self
         return a
 
     def transfer(self, from_account_id, to_account_id, amount):
@@ -88,7 +88,7 @@ class Bank(Base):
         return None
 
     def __repr__(self):
-        return f'Bank:\n{self.customer_list}\n{self.account_list}\n----------'
+        return f'Bank:\n{self.name}\n{self.customers}\n{self.accounts}\n----------'
 
 
 class BankException(Exception):

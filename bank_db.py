@@ -8,8 +8,39 @@ def initialize():
     db.add(bank)
     db.commit()
 
+
+def add_data():
+    b = db.query(Bank).filter(Bank.id==1).first()
+    print(b)
+
+    c1 = b.create_customer('John', 'Smithson', None)
+    db.add(c1)
+    a1 = b.create_account(c1)
+    db.add(a1)
+    a1.deposit(1000)
+    db.merge(a1)
+
+    c2 = b.create_customer('Anne', 'Brown', 'anne@brown')
+    a2 = b.create_account(c2)
+    db.add(a2)
+    a2.deposit(2000)
+    db.add(a2)
+
+    # #a = Account(c1)
+    # print(a1)
+    # a1.deposit(100)
+    # print(a1)
+    # a1.charge(50)
+    # print(a1)
+    # a2 = b.create_account(c1)
+    # print('Before transfer')
+    # print(b)
+    db.commit()
+
+
 if __name__ == '__main__':
-    initialize()
+    #initialize()
+    add_data()
 
 
 
